@@ -36,11 +36,11 @@ It wrote the code, ran away, and now the game is unplayable.
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Launch the app with `python -m streamlit run app.py`. The game opens with **Normal** difficulty selected (range 1–100, 8 attempts). Use the difficulty dropdown next to the buttons to switch to **Easy** (1–20, 6 attempts) or **Hard** (1–50, 5 attempts) at any time — changing difficulty automatically resets the game.
+2. The blue info bar at the top shows the instructions and the current number of **Attempts Left**. Type a whole number into the **Enter your guess** field and press **Enter** or click **Submit Guess**. Entering a letter, decimal, duplicate, or out-of-range number displays an error and does not consume an attempt.
+3. After each guess a hint appears — **📉 Go HIGHER!** or **📈 Go LOWER!** — followed by the score change for that turn (e.g. *Score: −5 points*). The Attempts Left counter decrements by one with each valid guess.
+4. Keep narrowing your guess using the hints. When you guess correctly, **🎉 Correct!** appears alongside your win bonus. The final success message shows your score, the total deduction for incorrect guesses, and how many attempts you used (e.g. *You won! The secret was 42. Final score: 65 (−15 points for 3 incorrect guesses.)*).
+5. If you run out of attempts the game ends with a loss message showing the secret number and your final score (minimum 10). Click **New Game** at any time to reset all state — score, history, attempts, and the guess field — and start a fresh round.
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
