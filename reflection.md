@@ -52,7 +52,8 @@ Document at least 3 bugs you found. Add rows as needed.
 
 ## 5. Looking ahead: your developer habits
 
-- What is one habit or strategy from this project that you want to reuse in future labs or projects?
+- What is one habit or strategy from this project that you want to reuse in future labs or projects? I should have been using git much more often in my alterations of the codebase. My first commit was near the end of the process. Luckily, cmd Z got me out of a few problems, but that is really what git is for. More commits, more often.
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
-- In one or two sentences, describe how this project changed the way you think about AI generated code.
+I still want to understand the proposed changes better before pressing Yes. Claude is highlighting code to be changed, but I'm not understanding the current vs updated code proposal prior to clicking Yes. 
+- In one or two sentences, describe how this project changed the way you think about AI generated code. Since I'm not very familiar with Streamlit, this demonstrated both the power and the risk of relying on AI for codebase updates and improvements. Many times the changes are correct, but without a good understanding of the underlying code, framework, etc there is a great risk of creating more problems that I'm solving.
