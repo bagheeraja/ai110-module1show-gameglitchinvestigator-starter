@@ -2,11 +2,11 @@
 
 ## 🚨 The Situation
 
-You asked an AI to build a simple "Number Guessing Game" using Streamlit.
+I asked an AI to build a simple "Number Guessing Game" using Streamlit.
 It wrote the code, ran away, and now the game is unplayable. 
 
-- You can't win.
-- The hints lie to you.
+- Players can't win.
+- The hints lie.
 - The secret number seems to have commitment issues.
 
 ## 🛠️ Setup
@@ -14,7 +14,7 @@ It wrote the code, ran away, and now the game is unplayable.
 1. Install dependencies: `pip install -r requirements.txt`
 2. Run the broken app: `python -m streamlit run app.py`
 
-## 🕵️‍♂️ Your Mission
+## 🕵️‍♂️ My Mission
 
 1. **Play the game.** Open the "Developer Debug Info" tab in the app to see the secret number. Try to win.
 2. **Find the State Bug.** Why does the secret number change every time you click "Submit"? Ask ChatGPT: *"How do I keep a variable from resetting in Streamlit when I click a button?"*
@@ -23,7 +23,7 @@ It wrote the code, ran away, and now the game is unplayable.
    - Run `pytest` in your terminal.
    - Keep fixing until all tests pass!
 
-## 📝 Document Your Experience
+## 📝 My Experience
 
 - [ ] Describe the game's purpose.
    - This game is a simple number guessing game. Players can choose from three different difficulty levels. Each level adjusts both the number of guesses and the range of numbers in the selection pool. Historical guesses are tracked to prevent duplicate guesses. Attempts remaining are tracked. Hints are provided based on the comparison of the guess and the secret number. A player wins the game if the guess the secret number. A player loses the game if the run out of attempts before guessing the secret number.
@@ -42,7 +42,7 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 4. Keep narrowing your guess using the hints. When you guess correctly, **🎉 Correct!** appears alongside your win bonus. The final success message shows your score, the total deduction for incorrect guesses, and how many attempts you used (e.g. *You won! The secret was 42. Final score: 65 (−15 points for 3 incorrect guesses.)*).
 5. If you run out of attempts the game ends with a loss message showing the secret number and your final score (minimum 10). Click **New Game** at any time to reset all state — score, history, attempts, and the guess field — and start a fresh round.
 
-**Screenshot** 
+**App Screenshot** 
 ![App Screenshot](assets/Game_screenshot.png)
 
 ## 🧪 Test Results

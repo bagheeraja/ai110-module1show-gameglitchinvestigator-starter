@@ -11,7 +11,6 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   2. The game does not start with the correct number of Attempts Left. The counter should start at 8, but it starts at 7.
   3. A glitch related to #2 is that the Attempts Left does not decrease after the first turn is completed. The counter remains at 7 after the first turn.
   4. The Game Over message displays when the New Game button is pressed. The game does not restart unless the browser page is refreshed.
-  5. 
 
 **Bug Reproduction Log**
 
@@ -29,18 +28,24 @@ Document at least 3 bugs you found. Add rows as needed.
 
 ## 2. How did you use AI as a teammate?
 
-- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)? Claude Code
-- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result). The AI suggested that every other guess was being converted to a string which resulted in a bad comparison to the Secret and prevented the guess from being successfully appended to the History array.
-- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result). In this case, the AI indication that the top-to-bottom execution order was causing the Attempts Left counter to lag one step behind was misleading. The other aspect of the issue was that two items, the game instructions and the Attempts Left were set up in the same component. If left together, either the directions could not be at the top or the Attempts Left could not be calculated correctly during a turn. My solution was to divide them up so the directions could still live at the top of the game screen while the Attempts Left could be moved to the bottom so the calculation could be processed in the correct order according to Streamlit's execution order.
+- Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)? 
+  - Claude Code
+- Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result). 
+  - The AI suggested that every other guess was being converted to a string which resulted in a bad comparison to the Secret and prevented the guess from being successfully appended to the History array.
+- Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result). 
+  - In this case, the AI indication that the top-to-bottom execution order was causing the Attempts Left counter to lag one step behind was misleading. The other aspect of the issue was that two items, the game instructions and the Attempts Left were set up in the same component. If left together, either the directions could not be at the top or the Attempts Left could not be calculated correctly during a turn. My solution was to divide them up so the directions could still live at the top of the game screen while the Attempts Left could be moved to the bottom so the calculation could be processed in the correct order according to Streamlit's execution order.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed? Manual testing & automated testing suite.
+- How did you decide whether a bug was really fixed? 
+  - Manual testing & automated testing suite.
 - Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code. I tested various types of input including ints in and out of the guess range boundaries, string input, and float input to determine whether the inputs were being handled correctly. 
-- Did AI help you design or understand any tests? How? Not yet, but probably yes before the submission of the project.
+  and what it showed you about your code. 
+  - I tested various types of input including ints in and out of the guess range boundaries, string input, and float input to determine whether the inputs were being handled correctly. 
+- Did AI help you design or understand any tests? How? 
+  - When the logic to determine whether a guess was in the valid range of guess (is_valid_range) was refactored into the logic_utils.py, a test suite was also developed to ensure that the logic was working correctly. I thought that the difficulty level might need to be a parameter for those tests. However, Claude Code indicated that doing so would be coupling two concerns together. Testing would be more effective, and simpler, to keep the two segments separate and test them independently.
 
 ---
 
