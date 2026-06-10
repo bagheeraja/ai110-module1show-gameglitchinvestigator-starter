@@ -42,7 +42,8 @@ Describe your fixed game in numbered steps so a reader can follow along without 
 4. Keep narrowing your guess using the hints. When you guess correctly, **🎉 Correct!** appears alongside your win bonus. The final success message shows your score, the total deduction for incorrect guesses, and how many attempts you used (e.g. *You won! The secret was 42. Final score: 65 (−15 points for 3 incorrect guesses.)*).
 5. If you run out of attempts the game ends with a loss message showing the secret number and your final score (minimum 10). Click **New Game** at any time to reset all state — score, history, attempts, and the guess field — and start a fresh round.
 
-**Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
+**Screenshot** 
+![App Screenshot](assets/Game_screenshot.png)
 
 ## 🧪 Test Results
 
