@@ -26,7 +26,7 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - [ ] Describe the game's purpose.
-   - This game is a simple number guessing game. Players can choose from three different difficulty levels. Each level adjusts both the number of guesses and the range of numbers in the selection pool. Historical guesses are tracked to prevent duplicate guesses. Attempts remaining are tracked. Hints are provided based on the comparison of the guess and the secret number. Incorrect guesses come with a penalty of -5 points. Wins are weighted by the number of guesses needed to achieve the win.
+   - This game is a simple number guessing game. Players can choose from three different difficulty levels. Each level adjusts both the number of guesses and the range of numbers in the selection pool. Historical guesses are tracked to prevent duplicate guesses. Attempts remaining are tracked. Hints are provided based on the comparison of the guess and the secret number. A player wins the game if the guess the secret number. A player loses the game if the run out of attempts before guessing the secret number.
 - [ ] Detail which bugs you found.
    - A number of bugs were found. Bug fixes are presented in a table below in the Summary of Changes section.
 - [ ] Explain what fixes you applied.
