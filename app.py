@@ -48,19 +48,10 @@ def check_guess(guess, secret):
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
     if outcome == "Win":
-        points = 100 - 10 * (attempt_number + 1)
-        if points < 10:
-            points = 10
+        points = max(10, 100 - 10 * (attempt_number - 1))
         return current_score + points
-
-    if outcome == "Too High":
-        if attempt_number % 2 == 0:
-            return current_score + 5
+    if outcome in ("Too High", "Too Low"):
         return current_score - 5
-
-    if outcome == "Too Low":
-        return current_score - 5
-
     return current_score
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
@@ -202,9 +193,6 @@ if submit:
 
         outcome, message = check_guess(guess_int, st.session_state.secret)
 
-        if show_hint:
-            st.warning(message)
-
         st.session_state.score = update_score(
             current_score=st.session_state.score,
             outcome=outcome,
@@ -212,19 +200,37 @@ if submit:
         )
 
         if outcome == "Win":
+            points = max(10, 100 - 10 * (st.session_state.attempts - 1))
+            if show_hint:
+                st.warning(f"{message}  |  Score: +{points} points for winning in {st.session_state.attempts} attempt(s).")
+        else:
+            if show_hint:
+                st.warning(f"{message}  |  Score: −5 points.")
+
+        if outcome == "Win":
             st.balloons()
             st.session_state.status = "won"
+            incorrect = st.session_state.attempts - 1
+            deduction = incorrect * 5
+            guess_word = "guess" if incorrect == 1 else "guesses"
             st.success(
                 f"You won! The secret was {st.session_state.secret}. "
-                f"Final score: {st.session_state.score}"
+                f"Final score: {st.session_state.score} "
+                f"(−{deduction} points for {incorrect} incorrect {guess_word}.)"
             )
         else:
             if st.session_state.attempts >= attempt_limit:
                 st.session_state.status = "lost"
+                final_score = max(10, st.session_state.score)
+                st.session_state.score = final_score
+                incorrect = st.session_state.attempts
+                deduction = incorrect * 5
+                guess_word = "guess" if incorrect == 1 else "guesses"
                 st.error(
                     f"Out of attempts! "
                     f"The secret was {st.session_state.secret}. "
-                    f"Score: {st.session_state.score}"
+                    f"Final score: {final_score} "
+                    f"(−{deduction} points for {incorrect} incorrect {guess_word}.)"
                 )
 
 st.session_state.debug_open = st.checkbox("Show Developer Debug Info", value=st.session_state.debug_open)
