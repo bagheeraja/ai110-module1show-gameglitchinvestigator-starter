@@ -37,16 +37,16 @@ Document at least 3 bugs you found. Add rows as needed.
 
 ## 3. Debugging and testing your fixes
 
-- How did you decide whether a bug was really fixed?
+- How did you decide whether a bug was really fixed? Manual testing
 - Describe at least one test you ran (manual or using pytest)  
-  and what it showed you about your code.
-- Did AI help you design or understand any tests? How?
+  and what it showed you about your code. I tested various types of input including ints in and out of the guess range boundaries, string input, and float input to determine whether the inputs were being handled correctly. 
+- Did AI help you design or understand any tests? How? Not yet, but probably yes before the submission of the project.
 
 ---
 
 ## 4. What did you learn about Streamlit and state?
 
-- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+- How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit? Streamlit executes code from top to bottom, which is not unusual. However, any time a user interacts with any element on the page, the WHOLE PAGE is re-rendered ("re_run") again from top to bottom. This re-run behavior results in all variables being reset each time the page is re-run. So, session state is something that lives outside the re-run script. Session state persists until the browser is reset in some way. 
 
 ---
 
