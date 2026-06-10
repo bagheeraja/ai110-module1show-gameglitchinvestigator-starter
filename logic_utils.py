@@ -54,6 +54,11 @@ def check_guess(guess, secret):
         return "Too Low", "📉 Go LOWER!"
 
 
+def is_valid_range(guess: int, low: int, high: int) -> bool:
+    """Return True if guess falls within [low, high] inclusive."""
+    return low <= guess <= high
+
+
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":

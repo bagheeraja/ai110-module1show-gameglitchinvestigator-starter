@@ -1,4 +1,4 @@
-from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score
+from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score, is_valid_range
 
 
 # ---------------------------------------------------------------------------
@@ -175,3 +175,45 @@ class TestUpdateScore:
         score = update_score(score, "Too High", 2)
         score = update_score(score, "Too Low", 3)
         assert score == -15
+
+
+# ---------------------------------------------------------------------------
+# is_valid_range
+# ---------------------------------------------------------------------------
+
+class TestIsValidRange:
+    # Easy range: 1–20
+    def test_easy_low_boundary_valid(self):
+        assert is_valid_range(1, 1, 20) is True
+
+    def test_easy_high_boundary_valid(self):
+        assert is_valid_range(20, 1, 20) is True
+
+    def test_easy_mid_range_valid(self):
+        assert is_valid_range(10, 1, 20) is True
+
+    def test_easy_zero_is_invalid(self):
+        assert is_valid_range(0, 1, 20) is False
+
+    def test_easy_negative_is_invalid(self):
+        assert is_valid_range(-5, 1, 20) is False
+
+    def test_easy_above_high_is_invalid(self):
+        assert is_valid_range(21, 1, 20) is False
+
+    # Hard range: 1–50
+    def test_hard_high_boundary_valid(self):
+        assert is_valid_range(50, 1, 50) is True
+
+    def test_hard_above_high_is_invalid(self):
+        assert is_valid_range(51, 1, 50) is False
+
+    # Normal range: 1–100
+    def test_normal_high_boundary_valid(self):
+        assert is_valid_range(100, 1, 100) is True
+
+    def test_normal_above_high_is_invalid(self):
+        assert is_valid_range(101, 1, 100) is False
+
+    def test_normal_zero_is_invalid(self):
+        assert is_valid_range(0, 1, 100) is False

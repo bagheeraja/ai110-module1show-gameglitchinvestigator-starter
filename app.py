@@ -1,6 +1,6 @@
 import random
 import streamlit as st
-from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score
+from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score, is_valid_range
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
@@ -130,7 +130,7 @@ if submit:
     if not ok:
         st.session_state.attempts -= 1
         st.error(err)
-    elif guess_int < low or guess_int > high:
+    elif not is_valid_range(guess_int, low, high):
         st.session_state.attempts -= 1
         st.error(f"Guess must be between {low} and {high}.")
     elif guess_int in st.session_state.history:
