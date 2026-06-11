@@ -79,6 +79,8 @@ if "high_score" not in st.session_state:
 
 st.sidebar.metric("High Score", st.session_state.high_score)
 
+st.metric("🏆 High Score", st.session_state.high_score)
+
 st.subheader("Make a guess")
 
 st.info("Guess a number between 1 and 100.")
