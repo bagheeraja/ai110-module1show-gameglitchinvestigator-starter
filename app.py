@@ -49,7 +49,6 @@ low, high = get_range_for_difficulty(difficulty)
 
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
-st.sidebar.metric("High Score", st.session_state.high_score)
 
 if "secret" not in st.session_state:
     st.session_state.secret = random.randint(low, high)
@@ -77,6 +76,8 @@ if "game_count" not in st.session_state:
 
 if "high_score" not in st.session_state:
     st.session_state.high_score = 0
+
+st.sidebar.metric("High Score", st.session_state.high_score)
 
 st.subheader("Make a guess")
 
