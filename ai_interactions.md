@@ -18,7 +18,7 @@ After the Summary below was developed, the following prompt was used: Complete s
 **What did the agent do?**
 
 <!-- List the steps the agent took (files edited, commands run, etc.) -->
-> Summary
+##Summary
 | --- | --- | --- |
 | Step | File | Action
 | 1 | logic_utils.py | Add is_high_score function
