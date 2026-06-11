@@ -18,7 +18,7 @@ def parse_guess(raw: str):
     if raw is None:
         return False, None, "Enter a guess."
 
-    if raw == "":
+    if raw.strip() == "":
         return False, None, "Enter a guess."
 
     try:
@@ -54,6 +54,11 @@ def check_guess(guess, secret):
         return "Too Low", "📉 Go LOWER!"
 
 
+def is_high_score(current_score: int, high_score: int) -> bool:
+    """Return True if current_score beats the stored high score."""
+    return current_score > high_score
+
+
 def is_valid_range(guess: int, low: int, high: int) -> bool:
     """Return True if guess falls within [low, high] inclusive."""
     return low <= guess <= high
@@ -62,8 +67,9 @@ def is_valid_range(guess: int, low: int, high: int) -> bool:
 def update_score(current_score: int, outcome: str, attempt_number: int):
     """Update score based on outcome and attempt number."""
     if outcome == "Win":
+        attempt_number = max(1, attempt_number)
         points = max(10, 100 - 10 * (attempt_number - 1))
-        return current_score + points
+        return max(10, current_score + points)
     if outcome in ("Too High", "Too Low"):
         return current_score - 5
     return current_score
