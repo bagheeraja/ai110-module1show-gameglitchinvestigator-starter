@@ -199,6 +199,8 @@ if submit:
                 st.session_state.status = "lost"
                 final_score = max(10, st.session_state.score)
                 st.session_state.score = final_score
+                if is_high_score(final_score, st.session_state.high_score):
+                    st.session_state.high_score = final_score
                 incorrect = st.session_state.attempts
                 deduction = incorrect * 5
                 guess_label = "guess" if incorrect == 1 else "guesses"
