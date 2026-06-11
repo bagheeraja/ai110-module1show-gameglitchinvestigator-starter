@@ -59,19 +59,31 @@ In this process, the code modifications for each step were reviewed, approved, a
 **Prompt used:**
 
 ```
-<!-- Paste the prompt you gave the AI -->
+Review all code for PEP 8 style compliance and provide a step by step process to correct any formatting or naming issues.
 ```
 
 **Linting output before:**
 
 ```
-<!-- Paste relevant linter warnings/errors -->
+| Step | File | Line | Issue |
+|---|---|---|---|
+| 1 | logic_utils.py | 100 | Long line in update_score docstring |
+| 2 | app.py | 3 | Import line with all six function names too long |
+| 3 | app.py | 87 | Selectbox options list in sidebar |
+| 4 | app.py | 98 | selected_difficulty selectbox index expression |
+| 5 | app.py | 142 | st.warning hint + score feedback string |
+| 6 | app.py | 157 | st.warning hint + score feedback string (wrong guess) |
+| 7 | app.py | 165 | st.success win message f-string |
+| 8 | app.py | 174 | st.success win message f-string continuation |
+| 9 | app.py | 188 | st.error loss message f-string |
+| 10 | app.py | 191 | st.error loss message f-string continuation |
+| 11 | tests/test_game_logic.py | 1 | Import line with all six function names too long |
 ```
 
 **Changes applied:**
 
 <!-- Describe what you changed based on the AI's suggestions -->
-
+The changes applied were to shorten lines to 79 characters.
 ---
 
 ## Model Comparison (SF11)
