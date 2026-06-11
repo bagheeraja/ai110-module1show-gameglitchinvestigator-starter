@@ -1,6 +1,13 @@
 import random
 import streamlit as st
-from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score, is_valid_range, is_high_score
+from logic_utils import (
+    get_range_for_difficulty,
+    parse_guess,
+    check_guess,
+    update_score,
+    is_valid_range,
+    is_high_score,
+)
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
 
@@ -84,7 +91,9 @@ with st.form(key="guess_form", clear_on_submit=True):
 
 col_hint, col_diff, col_ng = st.columns([1, 1, 1])
 with col_hint:
-    st.session_state.show_hint = st.checkbox("Show hint", value=st.session_state.show_hint)
+    st.session_state.show_hint = st.checkbox(
+        "Show hint", value=st.session_state.show_hint
+    )
 with col_diff:
     selected_difficulty = st.selectbox(
         "Difficulty",
@@ -95,7 +104,8 @@ with col_diff:
     if selected_difficulty != st.session_state.difficulty:
         st.session_state.difficulty = selected_difficulty
         st.session_state.attempts = 0
-        st.session_state.secret = random.randint(*get_range_for_difficulty(selected_difficulty))
+        new_low, new_high = get_range_for_difficulty(selected_difficulty)
+        st.session_state.secret = random.randint(new_low, new_high)
         st.session_state.status = "playing"
         st.session_state.history = []
         st.session_state.score = 0
@@ -139,7 +149,9 @@ if submit:
         st.error(f"Guess must be between {low} and {high}.")
     elif guess_int in st.session_state.history:
         st.session_state.attempts -= 1
-        st.error(f"{guess_int} has already been guessed. Try a different number.")
+        st.error(
+            f"{guess_int} has already been guessed. Try a different number."
+        )
     else:
         st.session_state.history.append(guess_int)
 
@@ -154,7 +166,10 @@ if submit:
         if outcome == "Win":
             points = max(10, 100 - 10 * (st.session_state.attempts - 1))
             if show_hint:
-                st.warning(f"{message}  |  Score: +{points} points for winning in {st.session_state.attempts} attempt(s).")
+                st.warning(
+                    f"{message}  |  Score: +{points} points for winning"
+                    f" in {st.session_state.attempts} attempt(s)."
+                )
         else:
             if show_hint:
                 st.warning(f"{message}  |  Score: −5 points.")
@@ -162,16 +177,19 @@ if submit:
         if outcome == "Win":
             st.balloons()
             st.session_state.status = "won"
-            if is_high_score(st.session_state.score, st.session_state.high_score):
+            if is_high_score(
+                st.session_state.score, st.session_state.high_score
+            ):
                 st.session_state.high_score = st.session_state.score
                 st.success("🏆 New High Score!")
             incorrect = st.session_state.attempts - 1
             deduction = incorrect * 5
-            guess_word = "guess" if incorrect == 1 else "guesses"
+            guess_label = "guess" if incorrect == 1 else "guesses"
             st.success(
                 f"You won! The secret was {st.session_state.secret}. "
                 f"Final score: {st.session_state.score} "
-                f"(−{deduction} points for {incorrect} incorrect {guess_word}.)"
+                f"(−{deduction} points for {incorrect} incorrect"
+                f" {guess_label}.)"
             )
         else:
             if st.session_state.attempts >= attempt_limit:
@@ -180,15 +198,18 @@ if submit:
                 st.session_state.score = final_score
                 incorrect = st.session_state.attempts
                 deduction = incorrect * 5
-                guess_word = "guess" if incorrect == 1 else "guesses"
+                guess_label = "guess" if incorrect == 1 else "guesses"
                 st.error(
                     f"Out of attempts! "
                     f"The secret was {st.session_state.secret}. "
                     f"Final score: {final_score} "
-                    f"(−{deduction} points for {incorrect} incorrect {guess_word}.)"
+                    f"(−{deduction} points for {incorrect}"
+                    f" incorrect {guess_label}.)"
                 )
 
-st.session_state.debug_open = st.checkbox("Show Developer Debug Info", value=st.session_state.debug_open)
+st.session_state.debug_open = st.checkbox(
+    "Show Developer Debug Info", value=st.session_state.debug_open
+)
 
 with st.expander("Developer Debug Info", expanded=st.session_state.debug_open):
     st.write("Secret:", st.session_state.secret)

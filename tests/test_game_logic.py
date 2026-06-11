@@ -1,4 +1,11 @@
-from logic_utils import get_range_for_difficulty, parse_guess, check_guess, update_score, is_valid_range, is_high_score
+from logic_utils import (
+    get_range_for_difficulty,
+    parse_guess,
+    check_guess,
+    update_score,
+    is_valid_range,
+    is_high_score,
+)
 
 
 # ---------------------------------------------------------------------------

@@ -97,7 +97,8 @@ def is_high_score(current_score: int, high_score: int) -> bool:
 
 
 def is_valid_range(guess: int, low: int, high: int) -> bool:
-    """Check whether a guess falls within the allowed range for the current game.
+    """Check whether a guess falls within the allowed range for the current
+    game.
 
     Both low and high are inclusive boundaries. Range values are provided
     by get_range_for_difficulty().
