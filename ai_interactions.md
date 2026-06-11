@@ -64,7 +64,6 @@ Review all code for PEP 8 style compliance and provide a step by step process to
 
 **Linting output before:**
 
-```
 | Step | File | Line | Issue |
 |---|---|---|---|
 | 1 | logic_utils.py | 100 | Long line in update_score docstring |
@@ -78,7 +77,7 @@ Review all code for PEP 8 style compliance and provide a step by step process to
 | 9 | app.py | 188 | st.error loss message f-string |
 | 10 | app.py | 191 | st.error loss message f-string continuation |
 | 11 | tests/test_game_logic.py | 1 | Import line with all six function names too long |
-```
+
 
 **Changes applied:**
 
