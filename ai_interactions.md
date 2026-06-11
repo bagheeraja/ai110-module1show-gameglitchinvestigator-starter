@@ -12,12 +12,14 @@
 
 <!-- Describe the goal you asked the agent to accomplish -->
 > Provide a step by step explanation of the process to add a High Score Tracking feature to the existing code base. Also indicate whether this feature is best incorporated within a current file or best developed as an independent file and imported into the App.
-> After the Summary below was developed, the following prompt was used: Complete steps 1-7 a single step at a time for review and confirmation.
+
+After the Summary below was developed, the following prompt was used: Complete steps 1-7 a single step at a time for review and confirmation.
 
 **What did the agent do?**
 
 <!-- List the steps the agent took (files edited, commands run, etc.) -->
 > Summary
+| --- | --- | --- |
 | Step | File | Action
 | 1 | logic_utils.py | Add is_high_score function
 | 2 | app.py | Initialize high_score in session state
@@ -30,7 +32,7 @@
 **What did you have to verify or fix manually?**
 
 <!-- Describe anything the agent got wrong or that required human review -->
-> In this process, the code modifications for each step were reviewed, approved, and completed prior to any work on the next step. However, no manual corrections were necessary during the process.
+In this process, the code modifications for each step were reviewed, approved, and completed prior to any work on the next step. However, no manual corrections were necessary during the process.
 
 ---
 
